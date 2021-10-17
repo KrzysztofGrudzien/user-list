@@ -1,13 +1,29 @@
 import Header from '../Header/Header';
-import Main from '../Main/Main';
+import UserList from '../UserList/UserList';
+import axios from 'axios';
+import React, { Component } from 'react';
 
-const App = () => {
-    return (
-        <div className='App'>
-            <Header />
-            <Main />
-        </div>
-    );
-};
+class App extends Component {
+    state = {
+        users: [],
+        isLoading: false,
+    };
+
+    async componentDidMount() {
+        this.setState({ isLoading: true });
+        const response = await axios.get('https://rickandmortyapi.com/api/character');
+        this.setState({ users: response.data.results, isLoading: false });
+        console.log(response.data.results);
+    }
+
+    render() {
+        return (
+            <div className='App'>
+                <Header />
+                <UserList isLoading={this.state.isLoading} users={this.state.users} />
+            </div>
+        );
+    }
+}
 
 export default App;
