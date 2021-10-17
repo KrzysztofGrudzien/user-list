@@ -11,9 +11,9 @@ class App extends Component {
 
     async componentDidMount() {
         this.setState({ isLoading: true });
-        const response = await axios.get('https://rickandmortyapi.com/api/character');
+        const response = await axios.get('https://rickandmortyapi.com/api/character/');
         this.setState({ users: response.data.results, isLoading: false });
-        console.log(response.data.results);
+        console.log(response.data);
     }
 
     render() {
