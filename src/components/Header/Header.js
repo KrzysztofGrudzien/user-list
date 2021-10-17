@@ -35,6 +35,7 @@ const Header = () => {
                                 <option value='male'>Male</option>
                                 <option value='genderless'>Genderless</option>
                                 <option value='unknown'>Unknown</option>
+                                <option value='all'>All genders</option>
                             </Form.Select>
                         </Col>
                         <Col sm={2}>
