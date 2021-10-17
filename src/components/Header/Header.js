@@ -15,6 +15,8 @@ const Header = () => {
         alignItems: 'center',
         display: 'flex',
         justifyContent: 'space-between',
+        paddingRight: '4rem',
+        width: '100%',
     };
 
     const styleIcon = {
@@ -28,20 +30,17 @@ const Header = () => {
                     <Row>
                         <Col sm={10}>
                             <Form.Select aria-label='Floating label select'>
-                                <option>Select one option of the list</option>
-                                <option value='name'>Name</option>
-                                <option value='status'>Status</option>
-                                <option value='species'>Species</option>
-                                <option value='type'>Type</option>
-                                <option value='gender'>Gender</option>
-                                <option value='image'>Image</option>
-                                <option value='created'>Created</option>
+                                <option>Filter by gender</option>
+                                <option value='female'>Female</option>
+                                <option value='male'>Male</option>
+                                <option value='genderless'>Genderless</option>
+                                <option value='unknown'>Unknown</option>
                             </Form.Select>
                         </Col>
                         <Col sm={2}>
                             <Button variant='primary' size='md' style={styleButton} type='submit'>
                                 <BsFilterRight style={styleIcon} />
-                                Filter your list
+                                Filter list
                             </Button>
                         </Col>
                     </Row>
