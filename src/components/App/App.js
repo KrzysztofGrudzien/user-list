@@ -1,5 +1,5 @@
 import Header from '../Header/Header';
-import UserList from '../UserList/UserList';
+import UsersList from '../UsersList/UsersList';
 import axios from 'axios';
 import React, { Component } from 'react';
 
@@ -20,7 +20,7 @@ class App extends Component {
         return (
             <div className='App'>
                 <Header />
-                <UserList isLoading={this.state.isLoading} users={this.state.users} />
+                <UsersList isLoading={this.state.isLoading} users={this.state.users} />
             </div>
         );
     }
