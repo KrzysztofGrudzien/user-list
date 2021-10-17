@@ -1,4 +1,4 @@
-import Header from '../Header/Header';
+import FilterBar from '../FilterBar/FilterBar';
 import UsersList from '../UsersList/UsersList';
 import axios from 'axios';
 import React, { Component } from 'react';
@@ -22,7 +22,7 @@ class App extends Component {
     render() {
         return (
             <div className='App'>
-                <Header />
+                <FilterBar />
                 <UsersList isLoading={this.state.isLoading} users={this.state.users} />
             </div>
         );

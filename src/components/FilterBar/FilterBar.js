@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { BsFilterRight } from 'react-icons/bs';
 
-const Header = () => {
+const FilterBar = () => {
     const styleContainer = {
         backgroundColor: '#f8f9fa',
         padding: '1rem 0',
@@ -15,8 +15,6 @@ const Header = () => {
         alignItems: 'center',
         display: 'flex',
         justifyContent: 'space-between',
-        paddingRight: '4rem',
-        width: '100%',
     };
 
     const styleIcon = {
@@ -30,18 +28,20 @@ const Header = () => {
                     <Row>
                         <Col sm={10}>
                             <Form.Select aria-label='Floating label select'>
-                                <option>Filter by gender</option>
-                                <option value='female'>Female</option>
-                                <option value='male'>Male</option>
-                                <option value='genderless'>Genderless</option>
-                                <option value='unknown'>Unknown</option>
-                                <option value='all'>All genders</option>
+                                <option>Select one option of the list</option>
+                                <option value='name'>Name</option>
+                                <option value='status'>Status</option>
+                                <option value='species'>Species</option>
+                                <option value='type'>Type</option>
+                                <option value='gender'>Gender</option>
+                                <option value='image'>Image</option>
+                                <option value='created'>Created</option>
                             </Form.Select>
                         </Col>
                         <Col sm={2}>
                             <Button variant='primary' size='md' style={styleButton} type='submit'>
                                 <BsFilterRight style={styleIcon} />
-                                Filter list
+                                Filter your list
                             </Button>
                         </Col>
                     </Row>
@@ -51,4 +51,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default FilterBar;
