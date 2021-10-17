@@ -20,6 +20,7 @@ const Main = ({ isLoading, users }) => {
                                         gridTemplateColumns: '1fr 1fr 1fr 1fr',
                                         gridGap: '1rem',
                                         listStyle: 'none',
+                                        paddingLeft: '0',
                                     }}
                                 >
                                     {users.map(user => (
