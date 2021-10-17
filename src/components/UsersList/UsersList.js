@@ -3,8 +3,9 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 import Loader from '../Loader/Loader';
+import styled from 'styled-components';
 
-const Main = ({ isLoading, users }) => {
+const UsersList = ({ isLoading, users }) => {
     return (
         <main className='main'>
             <Container fluid>
@@ -14,15 +15,7 @@ const Main = ({ isLoading, users }) => {
                             {isLoading ? (
                                 <Loader />
                             ) : (
-                                <ul
-                                    style={{
-                                        display: 'grid',
-                                        gridTemplateColumns: '1fr 1fr 1fr 1fr',
-                                        gridGap: '1rem',
-                                        listStyle: 'none',
-                                        paddingLeft: '0',
-                                    }}
-                                >
+                                <List>
                                     {users.map(user => (
                                         <li>
                                             <Card>
@@ -50,7 +43,7 @@ const Main = ({ isLoading, users }) => {
                                             </Card>
                                         </li>
                                     ))}
-                                </ul>
+                                </List>
                             )}
                         </Col>
                     </Row>
@@ -60,4 +53,12 @@ const Main = ({ isLoading, users }) => {
     );
 };
 
-export default Main;
+const List = styled.ul`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    list-style: none;
+    padding-left: 0;
+`;
+
+export default UsersList;
