@@ -12,7 +12,10 @@ class App extends Component {
     async componentDidMount() {
         this.setState({ isLoading: true });
         const response = await axios.get('https://rickandmortyapi.com/api/character/');
-        this.setState({ users: response.data.results, isLoading: false });
+        setTimeout(() => {
+            this.setState({ users: response.data.results, isLoading: false });
+        }, 3000);
+
         console.log(response.data);
     }
 
