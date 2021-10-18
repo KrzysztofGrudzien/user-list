@@ -34,7 +34,7 @@ const List = styled.ul`
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 1rem;
     padding-left: 0;
-    margin-top: 5rem;
+    margin-top: 4rem;
 `;
 
 export default UsersList;

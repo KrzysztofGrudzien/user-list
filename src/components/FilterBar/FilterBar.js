@@ -61,7 +61,7 @@ const FormLabel = styled(Form.Label)`
 
 const styleContainer = {
     backgroundColor: '#f8f9fa',
-    padding: '1rem 0',
+    padding: '1rem 0 2rem 0',
 };
 
 const styleButton = {
