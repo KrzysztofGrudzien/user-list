@@ -7,10 +7,8 @@ class PaginationBasic extends Component {
         let items = [];
         for (let number = 1; number <= this.props.pages; number++) {
             items.push(
-                <Pagination.Item key={number}>
-                    <a href='!#' onClick={() => this.props.filterPerPage(number)}>
-                        {number}
-                    </a>
+                <Pagination.Item key={number} onClick={() => this.props.filterPerPage(number)}>
+                    {number}
                 </Pagination.Item>,
             );
         }
