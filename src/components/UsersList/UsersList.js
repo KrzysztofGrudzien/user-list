@@ -4,8 +4,9 @@ import Row from 'react-bootstrap/Row';
 import Loader from '../Loader/Loader';
 import styled from 'styled-components';
 import UserItem from '../UserItem/UserItem';
+import Pagination from '../Pagination/Pagination';
 
-const UsersList = ({ isLoading, users }) => {
+const UsersList = ({ isLoading, users, pages, filterPerPage }) => {
     return (
         <main className='main'>
             <Container fluid>
@@ -15,11 +16,14 @@ const UsersList = ({ isLoading, users }) => {
                             {isLoading ? (
                                 <Loader />
                             ) : (
-                                <List>
-                                    {users.map(user => (
-                                        <UserItem user={user} key={user.id} />
-                                    ))}
-                                </List>
+                                <>
+                                    <Pagination pages={pages} filterPerPage={filterPerPage} />
+                                    <List>
+                                        {users.map(user => (
+                                            <UserItem user={user} key={user.id} />
+                                        ))}
+                                    </List>
+                                </>
                             )}
                         </Col>
                     </Row>
