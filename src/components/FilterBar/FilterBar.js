@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { BsFilterRight } from 'react-icons/bs';
+import styled from 'styled-components';
 
 class FilterBar extends Component {
     state = {
@@ -26,14 +27,18 @@ class FilterBar extends Component {
                 <Container>
                     <Form onSubmit={this.handleSubmitForm}>
                         <Row>
+                            <Col sm='12'>
+                                <FormLabel>Filter by gender</FormLabel>
+                            </Col>
+                        </Row>
+                        <Row>
                             <Col sm={10}>
                                 <Form.Select aria-label='Floating label select' onChange={this.handleFilterGender}>
-                                    <option value='all'>Filter by gender</option>
+                                    <option value='all'>All genders</option>
                                     <option value='male'>Male</option>
                                     <option value='female'>Female</option>
                                     <option value='genderless'>Genderless</option>
                                     <option value='unknown'>Unknown</option>
-                                    <option value='all'>All genders</option>
                                 </Form.Select>
                             </Col>
                             <Col sm={2}>
@@ -50,15 +55,23 @@ class FilterBar extends Component {
     }
 }
 
+const FormLabel = styled(Form.Label)`
+    font-size: 0.8rem;
+`;
+
 const styleContainer = {
     backgroundColor: '#f8f9fa',
     padding: '1rem 0',
 };
+
 const styleButton = {
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'space-between',
+    paddingRight: '2.3rem',
+    width: '100%',
 };
+
 const styleIcon = {
     marginRight: '1rem',
 };
