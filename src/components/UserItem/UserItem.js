@@ -2,29 +2,30 @@ import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
 
 const UserItem = ({ user }) => {
+    const { status, species, type, gender, image, name, created } = user;
     return (
         <li>
             <Card>
-                <Card.Img variant='top' src={user.image} alt='' />
+                <Card.Img variant='top' src={image} alt='image of species' />
                 <Card.Body>
-                    <CardTitle>{user.name}</CardTitle>
+                    <CardTitle>{name}</CardTitle>
                     <List>
                         <ListItem>
-                            <b>status:</b> {user.status}
+                            <b>status:</b> {status}
                         </ListItem>
                         <ListItem>
-                            <b>species:</b> {user.species}
+                            <b>species:</b> {species}
                         </ListItem>
                         <ListItem>
-                            <b>type:</b> {user.type}
+                            <b>type:</b> {type}
                         </ListItem>
                         <ListItem>
-                            <b>gender:</b> {user.gender}
+                            <b>gender:</b> {gender}
                         </ListItem>
                     </List>
                 </Card.Body>
                 <Card.Footer>
-                    <small className='text-muted'>Created: {user.created}</small>
+                    <small className='text-muted'>Created: {created}</small>
                 </Card.Footer>
             </Card>
         </li>
