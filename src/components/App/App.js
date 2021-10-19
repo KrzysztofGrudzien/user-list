@@ -1,5 +1,6 @@
 import FilterBar from '../FilterBar/FilterBar';
 import UsersList from '../UsersList/UsersList';
+import Footer from '../Footer/Footer';
 import axios from 'axios';
 import React, { Component } from 'react';
 
@@ -69,6 +70,7 @@ class App extends Component {
                     filterPerPage={this.filterPerPage}
                     filter={this.state.filter}
                 />
+                <Footer />
             </div>
         );
     }
