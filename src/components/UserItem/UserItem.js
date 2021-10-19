@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const UserItem = ({ user }) => {
     const { status, species, type, gender, image, name, created } = user;
+    const createdDate = `${created.slice(0, 10)} at ${created.slice(12, 19)}`;
     return (
         <li>
             <Card>
@@ -25,7 +26,7 @@ const UserItem = ({ user }) => {
                     </List>
                 </Card.Body>
                 <Card.Footer>
-                    <small className='text-muted'>Created: {created}</small>
+                    <small className='text-muted'>Posted: {createdDate}</small>
                 </Card.Footer>
             </Card>
         </li>
