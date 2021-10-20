@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const UserItem = ({ user }) => {
     const { status, species, type, gender, image, name, created } = user;
     const createdDate = `${created.slice(0, 10)} at ${created.slice(12, 19)}`;
+
     return (
         <li>
             <Card>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -6,17 +6,19 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { BsFilterRight } from 'react-icons/bs';
 import styled from 'styled-components';
+import { AppContext } from '../../context/AppContext';
 
-const FilterBar = ({ filterUser }) => {
-    const [filter, setFilter] = useState('');
+const FilterBar = () => {
+    const { filterUsers } = useContext(AppContext);
+    const [filterUser, setFilterUser] = useState('all');
 
     const handleSubmitForm = e => {
         e.preventDefault();
-        filterUser(filter);
+        filterUsers(filterUser);
     };
 
     const handleFilterGender = e => {
-        setFilter(e.target.value);
+        setFilterUser(e.target.value);
     };
 
     return (
