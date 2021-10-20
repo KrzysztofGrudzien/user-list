@@ -8,7 +8,6 @@ const PaginationBasic = () => {
     const [filterPage, setFilterPage] = useState(filter);
 
     let items = [];
-
     for (let number = 1; number <= pages; number++) {
         items.push(
             <Pagination.Item key={number} onClick={() => filterPerPage(number, filterPage)}>
