@@ -32,33 +32,41 @@ const App = () => {
             setIsLoading(!isLoading);
             const response = await axios.get('https://rickandmortyapi.com/api/character/');
 
-            setUsers(response.data.results);
-            setPages(response.data.info.pages);
-            setIsLoading(isLoading);
+            setTimeout(() => {
+                setUsers(response.data.results);
+                setPages(response.data.info.pages);
+                setIsLoading(isLoading);
+            }, 2000);
         } else {
             const response = await axios.get(`https://rickandmortyapi.com/api/character/?gender=${filter}`);
-            setUsers(response.data.results);
-            setPages(response.data.info.pages);
-            setIsLoading(isLoading);
+            setTimeout(() => {
+                setUsers(response.data.results);
+                setPages(response.data.info.pages);
+                setIsLoading(isLoading);
+            }, 2000);
         }
     };
 
     const filterPerPage = async pages => {
-        console.log(pages, filterGender);
         if (filterGender === 'all') {
             setIsLoading(!isLoading);
             const response = await axios.get(`https://rickandmortyapi.com/api/character/?page=${pages}`);
-            setUsers(response.data.results);
-            setPages(response.data.info.pages);
-            setIsLoading(isLoading);
+            setTimeout(() => {
+                setUsers(response.data.results);
+                setPages(response.data.info.pages);
+                setIsLoading(isLoading);
+            }, 2000);
         } else {
             setIsLoading(!isLoading);
             const response = await axios.get(
                 `https://rickandmortyapi.com/api/character/?page=${pages}&gender=${filterGender}`,
             );
-            setUsers(response.data.results);
-            setPages(response.data.info.pages);
-            setIsLoading(isLoading);
+
+            setTimeout(() => {
+                setUsers(response.data.results);
+                setPages(response.data.info.pages);
+                setIsLoading(isLoading);
+            }, 2000);
         }
     };
 
