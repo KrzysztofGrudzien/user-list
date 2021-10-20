@@ -12,61 +12,37 @@ const App = () => {
     const [filterGender, setFilterGender] = useState(defaultObject.filter);
     const { filter } = useContext(AppContext);
 
-    useEffect(() => {
-        async function fetchData() {
-            setIsLoading(!isLoading);
-            const response = await axios.get('https://rickandmortyapi.com/api/character/');
-            setTimeout(() => {
-                setUsers(response.data.results);
-                setPages(response.data.info.pages);
-                setIsLoading(isLoading);
-            }, 2000);
-        }
-        fetchData();
+    const fetchData = async link => {
+        setIsLoading(!isLoading);
+        const response = await link;
+        setTimeout(() => {
+            setUsers(response.data.results);
+            setPages(response.data.info.pages);
+            setIsLoading(isLoading);
+        }, 2000);
+    };
+
+    useEffect(async () => {
+        fetchData(await axios.get('https://rickandmortyapi.com/api/character/'));
     }, []);
 
     const filterUsers = async filter => {
         setIsLoading(!isLoading);
         setFilterGender(filter);
         if (filter === 'all') {
-            setIsLoading(!isLoading);
-            const response = await axios.get('https://rickandmortyapi.com/api/character/');
-
-            setTimeout(() => {
-                setUsers(response.data.results);
-                setPages(response.data.info.pages);
-                setIsLoading(isLoading);
-            }, 2000);
+            fetchData(await axios.get('https://rickandmortyapi.com/api/character/'));
         } else {
-            const response = await axios.get(`https://rickandmortyapi.com/api/character/?gender=${filter}`);
-            setTimeout(() => {
-                setUsers(response.data.results);
-                setPages(response.data.info.pages);
-                setIsLoading(isLoading);
-            }, 2000);
+            fetchData(await axios.get(`https://rickandmortyapi.com/api/character/?gender=${filter}`));
         }
     };
 
     const filterPerPage = async pages => {
         if (filterGender === 'all') {
-            setIsLoading(!isLoading);
-            const response = await axios.get(`https://rickandmortyapi.com/api/character/?page=${pages}`);
-            setTimeout(() => {
-                setUsers(response.data.results);
-                setPages(response.data.info.pages);
-                setIsLoading(isLoading);
-            }, 2000);
+            fetchData(await axios.get(`https://rickandmortyapi.com/api/character/?page=${pages}`));
         } else {
-            setIsLoading(!isLoading);
-            const response = await axios.get(
-                `https://rickandmortyapi.com/api/character/?page=${pages}&gender=${filterGender}`,
+            fetchData(
+                await axios.get(`https://rickandmortyapi.com/api/character/?page=${pages}&gender=${filterGender}`),
             );
-
-            setTimeout(() => {
-                setUsers(response.data.results);
-                setPages(response.data.info.pages);
-                setIsLoading(isLoading);
-            }, 2000);
         }
     };
 
