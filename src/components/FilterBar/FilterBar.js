@@ -85,13 +85,14 @@ const styleContainer = {
 const styleButton = {
     alignItems: 'center',
     display: 'flex',
-    justifyContent: 'space-between',
-    paddingRight: '2.3rem',
+    justifyContent: 'center',
+    position: 'relative',
     width: '100%',
 };
 
 const styleIcon = {
-    marginRight: '1rem',
+    left: '1rem',
+    position: 'absolute',
 };
 
 export default FilterBar;
