@@ -19,6 +19,7 @@ const PaginationBasic = () => {
 };
 
 const PaginationList = styled(Pagination)`
+    flex-wrap: wrap;
     justify-content: flex-end;
     margin-bottom: -3rem;
     margin-top: 2rem;
