@@ -1,5 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const UserItem = ({ user }) => {
     const { status, species, type, gender, image, name, created } = user;
@@ -48,5 +49,9 @@ const List = styled.ul`
 const ListItem = styled.li`
     padding: 0.2rem 0;
 `;
+
+UserItem.propTypes = {
+    user: PropTypes.object.isRequired,
+};
 
 export default UserItem;
