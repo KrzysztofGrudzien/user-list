@@ -46,8 +46,12 @@ const FilterBar = () => {
                             </Col>
                         </Row>
                         <Row>
-                            <Col sm={10}>
-                                <Form.Select aria-label='Floating label select' onChange={handleFilterGender}>
+                            <Col lg={9} md={8} sm={6} xs={12}>
+                                <Form.Select
+                                    aria-label='Floating label select'
+                                    onChange={handleFilterGender}
+                                    style={{ marginBottom: '1rem' }}
+                                >
                                     <option value='all'>All genders</option>
                                     <option value='male'>Male</option>
                                     <option value='female'>Female</option>
@@ -55,7 +59,7 @@ const FilterBar = () => {
                                     <option value='unknown'>Unknown</option>
                                 </Form.Select>
                             </Col>
-                            <Col sm={2}>
+                            <Col lg={3} md={4} sm={6} xs={12}>
                                 <Button variant='primary' size='md' style={styleButton} type='submit'>
                                     <BsFilterRight style={styleIcon} />
                                     Filter your list
