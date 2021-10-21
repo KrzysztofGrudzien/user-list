@@ -62,6 +62,18 @@ const UsersList = () => {
 const List = styled.ul`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    @media (max-width: 1400px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (max-width: 992px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
     grid-gap: 1rem;
     padding-left: 0;
     margin-top: 4rem;

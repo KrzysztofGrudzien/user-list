@@ -10,7 +10,11 @@ const PaginationBasic = () => {
     let items = [];
     for (let number = 1; number <= pages; number++) {
         items.push(
-            <Pagination.Item key={number} onClick={() => filterPerPage(number, filterPage)}>
+            <Pagination.Item
+                key={number}
+                onClick={() => filterPerPage(number, filterPage)}
+                style={{ margin: '0.2rem' }}
+            >
                 {number}
             </Pagination.Item>,
         );
@@ -19,6 +23,7 @@ const PaginationBasic = () => {
 };
 
 const PaginationList = styled(Pagination)`
+    flex-wrap: wrap;
     justify-content: flex-end;
     margin-bottom: -3rem;
     margin-top: 2rem;
