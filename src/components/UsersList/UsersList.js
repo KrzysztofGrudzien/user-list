@@ -10,25 +10,26 @@ import { AppContext } from '../../context/AppContext';
 
 const UsersList = () => {
     const { isLoading, users } = useContext(AppContext);
+
+    const isLoadingUsersList = isLoading ? (
+        <Loader />
+    ) : (
+        <>
+            <Pagination />
+            <List>
+                {users.map(user => (
+                    <UserItem user={user} key={user.id} />
+                ))}
+            </List>
+        </>
+    );
+
     return (
         <main className='main'>
             <Container fluid>
                 <Container>
                     <Row>
-                        <Col lg={12}>
-                            {isLoading ? (
-                                <Loader />
-                            ) : (
-                                <>
-                                    <Pagination />
-                                    <List>
-                                        {users.map(user => (
-                                            <UserItem user={user} key={user.id} />
-                                        ))}
-                                    </List>
-                                </>
-                            )}
-                        </Col>
+                        <Col lg={12}>{isLoadingUsersList}</Col>
                     </Row>
                 </Container>
             </Container>
