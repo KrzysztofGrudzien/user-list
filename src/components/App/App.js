@@ -10,6 +10,7 @@ const App = () => {
     const [isLoading, setIsLoading] = useState(defaultObject.isLoading);
     const [pages, setPages] = useState(defaultObject.pages);
     const [filterGender, setFilterGender] = useState(defaultObject.filter);
+    const [activePage, setActivePage] = useState(defaultObject.activePage);
     const { filter } = useContext(AppContext);
 
     const fetchData = async link => {
@@ -32,6 +33,7 @@ const App = () => {
         } else {
             fetchData(await axios.get(`https://rickandmortyapi.com/api/character/?gender=${filter}`));
         }
+        setActivePage(1);
     };
 
     const filterPerPage = async pages => {
@@ -42,10 +44,11 @@ const App = () => {
                 await axios.get(`https://rickandmortyapi.com/api/character/?page=${pages}&gender=${filterGender}`),
             );
         }
+        setActivePage(pages);
     };
 
     return (
-        <AppContext.Provider value={{ isLoading, filter, filterUsers, pages, filterPerPage, users }}>
+        <AppContext.Provider value={{ isLoading, filter, filterUsers, pages, filterPerPage, users, activePage }}>
             <div className='App'>
                 <FilterBar />
                 <UsersList />

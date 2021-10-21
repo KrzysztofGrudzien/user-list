@@ -7,6 +7,7 @@ export const defaultObject = {
     isLoading: false,
     pages: null,
     users: [],
+    activePage: 1,
 };
 
 export const AppContext = createContext(defaultObject);
