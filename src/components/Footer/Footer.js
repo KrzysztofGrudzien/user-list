@@ -10,10 +10,10 @@ const Footer = () => {
                 Made in React.js by <strong>Krzysztof Grudzień</strong> as a recruiter task
             </p>
             <Nav>
-                <a href='https://github.com/KrzysztofGrudzien/users-list' target='_blank'>
+                <a href='https://github.com/KrzysztofGrudzien/users-list' target='_blank' rel='noreferrer'>
                     <AiFillGithub size='2rem' />
                 </a>
-                <a href='https://rickandmortyapi.com/documentation/' target='_blank'>
+                <a href='https://rickandmortyapi.com/documentation/' target='_blank' rel='noreferrer'>
                     <AiFillApi size='2rem' />
                 </a>
             </Nav>

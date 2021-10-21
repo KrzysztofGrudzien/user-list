@@ -1,30 +1,34 @@
 import Card from 'react-bootstrap/Card';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const UserItem = ({ user }) => {
+    const { status, species, type, gender, image, name, created } = user;
+    const createdDate = `${created.slice(0, 10)} at ${created.slice(12, 19)}`;
+
     return (
         <li>
             <Card>
-                <Card.Img variant='top' src={user.image} alt='' />
+                <Card.Img variant='top' src={image} alt='image of species' />
                 <Card.Body>
-                    <CardTitle>{user.name}</CardTitle>
+                    <CardTitle>{name}</CardTitle>
                     <List>
                         <ListItem>
-                            <b>status:</b> {user.status}
+                            <b>status:</b> {status}
                         </ListItem>
                         <ListItem>
-                            <b>species:</b> {user.species}
+                            <b>species:</b> {species}
                         </ListItem>
                         <ListItem>
-                            <b>type:</b> {user.type}
+                            <b>type:</b> {type}
                         </ListItem>
                         <ListItem>
-                            <b>gender:</b> {user.gender}
+                            <b>gender:</b> {gender}
                         </ListItem>
                     </List>
                 </Card.Body>
                 <Card.Footer>
-                    <small className='text-muted'>Created: {user.created}</small>
+                    <small className='text-muted'>Posted: {createdDate}</small>
                 </Card.Footer>
             </Card>
         </li>
@@ -45,5 +49,9 @@ const List = styled.ul`
 const ListItem = styled.li`
     padding: 0.2rem 0;
 `;
+
+UserItem.propTypes = {
+    user: PropTypes.object.isRequired,
+};
 
 export default UserItem;

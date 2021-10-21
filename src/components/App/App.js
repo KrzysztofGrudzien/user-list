@@ -2,78 +2,59 @@ import FilterBar from '../FilterBar/FilterBar';
 import UsersList from '../UsersList/UsersList';
 import Footer from '../Footer/Footer';
 import axios from 'axios';
-import React, { Component } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AppContext, defaultObject } from '../../context/AppContext';
 
-class App extends Component {
-    state = {
-        users: [],
-        isLoading: false,
-        pages: null,
-        filter: 'all',
-    };
+const App = () => {
+    const [users, setUsers] = useState(defaultObject.users);
+    const [isLoading, setIsLoading] = useState(defaultObject.isLoading);
+    const [pages, setPages] = useState(defaultObject.pages);
+    const [filterGender, setFilterGender] = useState(defaultObject.filter);
+    const { filter } = useContext(AppContext);
 
-    async componentDidMount() {
-        this.setState({ isLoading: true });
-        const response = await axios.get('https://rickandmortyapi.com/api/character/');
+    const fetchData = async link => {
+        setIsLoading(!isLoading);
+        const response = await link;
         setTimeout(() => {
-            this.setState({ users: response.data.results, isLoading: false, pages: response.data.info.pages });
+            setUsers(response.data.results);
+            setPages(response.data.info.pages);
+            setIsLoading(isLoading);
         }, 2000);
-    }
+    };
 
-    filterUser = async filter => {
-        this.setState({ isLoading: true });
+    useEffect(async () => {
+        fetchData(await axios.get('https://rickandmortyapi.com/api/character/'));
+    }, []);
+
+    const filterUsers = async filter => {
+        setIsLoading(!isLoading);
+        setFilterGender(filter);
         if (filter === 'all') {
-            this.setState({ isLoading: true });
-            const response = await axios.get('https://rickandmortyapi.com/api/character/');
-            setTimeout(() => {
-                this.setState({ users: response.data.results, isLoading: false, pages: response.data.info.pages });
-            }, 2000);
+            fetchData(await axios.get('https://rickandmortyapi.com/api/character/'));
         } else {
-            const response = await axios.get(`https://rickandmortyapi.com/api/character/?gender=${filter}`);
-            setTimeout(() => {
-                this.setState({
-                    users: response.data.results,
-                    isLoading: false,
-                    pages: response.data.info.pages,
-                    filter,
-                });
-            }, 2000);
+            fetchData(await axios.get(`https://rickandmortyapi.com/api/character/?gender=${filter}`));
         }
     };
 
-    filterPerPage = async pages => {
-        if (this.state.filter === 'all') {
-            this.setState({ isLoading: true });
-            const response = await axios.get(`https://rickandmortyapi.com/api/character/?page=${pages}`);
-            setTimeout(() => {
-                this.setState({ users: response.data.results, isLoading: false, pages: response.data.info.pages });
-            }, 2000);
+    const filterPerPage = async pages => {
+        if (filterGender === 'all') {
+            fetchData(await axios.get(`https://rickandmortyapi.com/api/character/?page=${pages}`));
         } else {
-            this.setState({ isLoading: true });
-            const response = await axios.get(
-                `https://rickandmortyapi.com/api/character/?page=${pages}&gender=${this.state.filter}`,
+            fetchData(
+                await axios.get(`https://rickandmortyapi.com/api/character/?page=${pages}&gender=${filterGender}`),
             );
-            setTimeout(() => {
-                this.setState({ users: response.data.results, isLoading: false, pages: response.data.info.pages });
-            }, 2000);
         }
     };
 
-    render() {
-        return (
+    return (
+        <AppContext.Provider value={{ isLoading, filter, filterUsers, pages, filterPerPage, users }}>
             <div className='App'>
-                <FilterBar filterUser={this.filterUser} />
-                <UsersList
-                    isLoading={this.state.isLoading}
-                    users={this.state.users}
-                    pages={this.state.pages}
-                    filterPerPage={this.filterPerPage}
-                    filter={this.state.filter}
-                />
+                <FilterBar />
+                <UsersList />
                 <Footer />
             </div>
-        );
-    }
-}
+        </AppContext.Provider>
+    );
+};
 
 export default App;
