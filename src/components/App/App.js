@@ -15,11 +15,9 @@ const App = () => {
     const fetchData = async link => {
         setIsLoading(!isLoading);
         const response = await link;
-        setTimeout(() => {
-            setUsers(response.data.results);
-            setPages(response.data.info.pages);
-            setIsLoading(isLoading);
-        }, 2000);
+        setUsers(response.data.results);
+        setPages(response.data.info.pages);
+        setIsLoading(isLoading);
     };
 
     useEffect(async () => {
