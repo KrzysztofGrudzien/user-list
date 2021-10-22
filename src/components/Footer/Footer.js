@@ -46,6 +46,10 @@ const FooterContainer = styled(Container)`
     margin-top: 1rem;
     padding: 0 1rem;
 
+    @media (max-width: 567px) {
+        flex-direction: column;
+    }
+
     p {
         margin: 1rem 0;
     }
