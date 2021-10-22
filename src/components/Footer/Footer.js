@@ -21,30 +21,32 @@ const Footer = () => {
 
     return (
         <motion.div variants={animations} initial='hidden' animate='show'>
-            <FooterContainer>
-                <p>
-                    Made in React.js by <strong>Krzysztof Grudzień</strong> as a recruiter task
-                </p>
-                <Nav>
-                    <a href='https://github.com/KrzysztofGrudzien/users-list' target='_blank' rel='noreferrer'>
-                        <AiFillGithub size='2rem' />
-                    </a>
-                    <a href='https://rickandmortyapi.com/documentation/' target='_blank' rel='noreferrer'>
-                        <AiFillApi size='2rem' />
-                    </a>
-                </Nav>
-            </FooterContainer>
+            <Container>
+                <FooterContainer>
+                    <p>
+                        Made in React.js by <strong>Krzysztof Grudzień</strong> as a recruiter task
+                    </p>
+                    <Nav>
+                        <a href='https://github.com/KrzysztofGrudzien/users-list' target='_blank' rel='noreferrer'>
+                            <AiFillGithub size='2rem' />
+                        </a>
+                        <a href='https://rickandmortyapi.com/documentation/' target='_blank' rel='noreferrer'>
+                            <AiFillApi size='2rem' />
+                        </a>
+                    </Nav>
+                </FooterContainer>
+            </Container>
         </motion.div>
     );
 };
 
-const FooterContainer = styled(Container)`
+const FooterContainer = styled.footer`
     align-items: center;
     background-color: #f8f9fa;
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
-    padding: 0 1rem;
+    padding: 1rem;
 
     @media (max-width: 567px) {
         flex-direction: column;
